@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python For All</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    window.MonacoEnvironment = { getWorkerUrl: () => "data:text/javascript;charset=utf-8,self.MonacoEnvironment={baseUrl:'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/'};importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/vs/base/worker/workerMain.js');" };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/vs/loader.min.js"></script>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <section class="login-view" id="loginView">
+      <div class="login-card glass">
+        <div class="brand-mark">
+          <span>PV</span>
+        </div>
+        <p class="eyebrow">Python For All</p>
+        <h1>Unlock your Python library.</h1>
+        <p class="login-copy">A polished vault of beginner-friendly Python programs with a VS Code-style workspace.</p>
+        <p class="credit-line">Made by Divyansh Arya with Codex</p>
+        <form id="loginForm" class="login-form">
+          <label for="passwordInput">Password</label>
+          <div class="password-wrap">
+            <i data-lucide="lock"></i>
+            <input id="passwordInput" type="password" placeholder="Enter vault password" autocomplete="current-password" />
+          </div>
+          <p class="hint">Use <strong>python123</strong> for this demo.</p>
+          <button class="primary-btn" type="submit">
+            <i data-lucide="log-in"></i>
+            Open Vault
+          </button>
+          <p class="form-error" id="loginError" role="alert"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="vault-view is-hidden" id="vaultView">
+      <header class="topbar glass">
+        <button class="icon-btn ghost mobile-menu" id="mobileMenuBtn" aria-label="Toggle categories">
+          <i data-lucide="panel-left"></i>
+        </button>
+        <div class="product">
+          <div class="mini-logo">PV</div>
+          <div>
+            <p>Python For All</p>
+            <strong>Pro Workspace</strong>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn ghost" id="addProgramBtn" aria-label="Add new program" title="Add new program">
+            <i data-lucide="plus"></i>
+          </button>
+          <button class="icon-btn ghost" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <i data-lucide="moon"></i>
+          </button>
+          <button class="icon-btn ghost" id="logoutBtn" aria-label="Lock vault" title="Lock vault">
+            <i data-lucide="lock-keyhole"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="sidebar glass" id="sidebar">
+          <div class="search-wrap">
+            <i data-lucide="search"></i>
+            <input id="searchInput" type="search" placeholder="Search Programs" />
+            <kbd>/</kbd>
+          </div>
+          <div class="category-grid" id="categoryGrid"></div>
+          <div class="quick-panel">
+            <span>Solved today</span>
+            <strong id="solvedCount">0</strong>
+          </div>
+        </aside>
+
+        <section class="library glass" id="homeScreen">
+          <div class="home-hero">
+            <p class="eyebrow">Curated beginner programs</p>
+            <h1>Python For All</h1>
+            <p>Search, open, edit, run, copy, and download Python examples from one elegant workspace.</p>
+            <p class="credit-line">Made by Divyansh Arya with Codex</p>
+          </div>
+          <div class="section-title">
+            <h2>Categories</h2>
+            <span id="programTotal">0 programs</span>
+          </div>
+          <div class="program-list" id="programList"></div>
+        </section>
+
+        <section class="editor-view glass is-hidden" id="editorScreen">
+          <div class="editor-head">
+            <button class="back-btn" id="backBtn">
+              <i data-lucide="arrow-left"></i>
+              Back
+            </button>
+            <div>
+              <p id="programCategory">Basics</p>
+              <h2 id="programTitle">Program.py</h2>
+            </div>
+            <div class="editor-actions">
+              <button class="action-btn" id="copyBtn"><i data-lucide="clipboard"></i>Copy</button>
+              <button class="action-btn primary" id="runBtn"><i data-lucide="play"></i>Run</button>
+              <button class="action-btn" id="downloadBtn"><i data-lucide="download"></i>Download</button>
+              <button class="action-btn danger" id="deleteBtn"><i data-lucide="trash-2"></i>Delete</button>
+            </div>
+          </div>
+
+          <div class="split-pane">
+            <div class="code-panel">
+              <div class="panel-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <strong>Code</strong>
+              </div>
+              <div id="editor" class="editor"></div>
+              <textarea id="fallbackEditor" class="fallback-editor" spellcheck="false"></textarea>
+            </div>
+            <div class="output-panel">
+              <div class="panel-bar">
+                <i data-lucide="terminal-square"></i>
+                <strong>Output</strong>
+              </div>
+              <div class="run-input">
+                <i data-lucide="keyboard"></i>
+                <input id="runtimeInput" placeholder="Program input, e.g. 13" />
+              </div>
+              <pre id="outputBox">Press Run to execute this program.</pre>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="add-dialog glass" id="addDialog">
+    <form method="dialog" class="dialog-form" id="addProgramForm">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">Custom vault item</p>
+          <h2>Add New Program</h2>
+        </div>
+        <button class="icon-btn ghost" value="cancel" type="button" id="closeDialogBtn" aria-label="Close">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <label>Program Name<input id="newName" required placeholder="Simple Interest" /></label>
+      <label>Category<input id="newCategory" required placeholder="Basics" /></label>
+      <label>Python Code<textarea id="newCode" required spellcheck="false">print("Hello from Python For All")</textarea></label>
+      <div class="dialog-actions">
+        <button class="action-btn" value="cancel" type="button" id="cancelAddBtn">Cancel</button>
+        <button class="primary-btn" type="submit"><i data-lucide="save"></i>Save Program</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="programs.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
