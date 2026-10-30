@@ -641,7 +641,7 @@ plt.show()`,
     }
   },
   {
-    id: "vowel-frequency", title: "Vowel Frequency", file: "Vowel_Frequency.py", category: "Practice Problems", icon: "case-sensitive",
+    id: "vowel-frequency", title: "#1 (AdP) Frecuency of each vowel and total no of vowel", file: "#1 (AdP) Frecuency of each vowel and total no of vowel.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "case-sensitive",
     code: `text = input("Enter a string: ")
 counts = {vowel: 0 for vowel in "aeiou"}
 for character in text.lower():
@@ -653,7 +653,7 @@ print("Total vowels present in the text =", sum(counts.values()))`,
     run(input) { const text = String(input || "Education"); const counts = Object.fromEntries([...["a","e","i","o","u"].map(v=>[v,(text.toLowerCase().match(new RegExp(v,"g"))||[]).length])]); return `Enter a string: ${text}\n\n${Object.entries(counts).map(([v,n])=>`Frequency of vowel ${v.toUpperCase()} = ${n}`).join("\n")}\nTotal vowels present in the text = ${Object.values(counts).reduce((a,b)=>a+b,0)}`; }
   },
   {
-    id: "character-types", title: "Count Character Types", file: "Character_Types.py", category: "Practice Problems", icon: "scan-text",
+    id: "character-types", title: "#2 (AdP) Count uppercase, lowercase, digits, and special characters", file: "#2 (AdP) Count uppercase, lowercase, digits, and special characters.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "scan-text",
     code: `text = input("Enter a string: ")
 upper = lower = digit = special = 0
 for ch in text:
@@ -668,7 +668,7 @@ print("Special characters =", special)`,
     run(input) { const text=String(input||"Hello123!"); const c=[...text].reduce((a,ch)=>{if(/[A-Z]/.test(ch))a[0]++;else if(/[a-z]/.test(ch))a[1]++;else if(/[0-9]/.test(ch))a[2]++;else a[3]++;return a},[0,0,0,0]); return `Enter a string: ${text}\n\nUppercase letters = ${c[0]}\nLowercase letters = ${c[1]}\nDigits = ${c[2]}\nSpecial characters = ${c[3]}`; }
   },
   {
-    id: "maximum-five", title: "Maximum of Five Numbers", file: "Maximum_of_Five.py", category: "Practice Problems", icon: "arrow-up-wide-narrow",
+    id: "maximum-five", title: "#3 (AdP) Find the maximum of five numbers", file: "#3 (AdP) Find the maximum of five numbers.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "arrow-up-wide-narrow",
     code: `numbers = []
 for i in range(5):
     numbers.append(int(input("Enter a number: ")))
@@ -676,7 +676,7 @@ print("Maximum number =", max(numbers))`,
     run(input) { const a=String(input||"12, 7, 35, 19, 4").split(/[\s,]+/).map(Number); if(a.length<5||a.slice(0,5).some(n=>!Number.isFinite(n)))return "Enter five numbers separated by commas."; return `Numbers: ${a.slice(0,5).join(", ")}\n\nMaximum number = ${Math.max(...a.slice(0,5))}`; }
   },
   {
-    id: "armstrong-number-practice", title: "Armstrong Number Check", file: "Armstrong_Check.py", category: "Practice Problems", icon: "sparkles",
+    id: "armstrong-number-practice", title: "#4 (AdP) Check whether a number is Armstrong or not", file: "#4 (AdP) Check whether a number is Armstrong or not.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "sparkles",
     code: `num = int(input("Enter a number: "))
 digits = str(abs(num))
 power = len(digits)
@@ -685,7 +685,7 @@ print("Armstrong number" if total == num else "Not an Armstrong number")`,
     run(input) { const n=Number(String(input||"153").split(",")[0]); if(!Number.isInteger(n))return "Enter a valid integer."; const d=String(Math.abs(n)); const total=[...d].reduce((s,x)=>s+Number(x)**d.length,0); return `Enter a number: ${n}\n\n${total===n?"Armstrong number":"Not an Armstrong number"}`; }
   },
   {
-    id: "first-primes", title: "First N Prime Numbers", file: "First_N_Primes.py", category: "Practice Problems", icon: "hash",
+    id: "first-primes", title: "#5 (AdP) Print first n prime numbers", file: "#5 (AdP) Print first n prime numbers.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "hash",
     code: `n = int(input("Enter n: "))
 count = 0
 number = 2
@@ -697,14 +697,14 @@ while count < n:
     run(input) { const n=Math.floor(Number(String(input||"10").split(",")[0])); if(!Number.isFinite(n)||n<1||n>1000)return "Enter n from 1 to 1000."; const primes=[]; for(let x=2;primes.length<n;x++){let p=true;for(let d=2;d*d<=x;d++)if(x%d===0){p=false;break;}if(p)primes.push(x);} return `Enter n: ${n}\n\n${primes.join("\n")}`; }
   },
   {
-    id: "list-frequency", title: "Frequency of List Elements", file: "List_Frequency.py", category: "Practice Problems", icon: "list-ordered",
+    id: "list-frequency", title: "#6 (AdP) Count frequency of every element in a list", file: "#6 (AdP) Count frequency of every element in a list.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "list-ordered",
     code: `numbers = list(map(int, input("Enter numbers separated by spaces: ").split()))
 for value in dict.fromkeys(numbers):
     print(value, "occurs", numbers.count(value), "times")`,
     run(input) { const a=String(input||"2, 4, 2, 5, 4, 2").split(/[\s,]+/).filter(Boolean).map(Number); if(!a.length||a.some(x=>!Number.isFinite(x)))return "Enter numbers separated by spaces or commas."; const unique=[...new Set(a)]; return `Numbers: ${a.join(", ")}\n\n${unique.map(x=>`${x} occurs ${a.filter(n=>n===x).length} times`).join("\n")}`; }
   },
   {
-    id: "electricity-bill", title: "Electricity Bill Calculator", file: "Electricity_Bill.py", category: "Practice Problems", icon: "zap",
+    id: "electricity-bill", title: "#7 (AdP) Electricity bill calculator", file: "#7 (AdP) Electricity bill calculator.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "zap",
     code: `customer_no = input("Enter customer number: ")
 units = int(input("Enter units consumed: "))
 if units <= 100: amount = units * 5
@@ -717,7 +717,7 @@ print("Amount to Pay: Rs.", amount)`,
     run(input) { const [customer="C-1001",unitsText="250"]=String(input||"").split(/[;,\s]+/); const u=Number(unitsText); if(!Number.isFinite(u)||u<0)return "Enter customer number and non-negative units, e.g. C-1001, 250."; const amount=u<=100?u*5:u<=300?500+(u-100)*10.25:u<=500?2550+(u-300)*15.5:5650+(u-500)*19.75; return `Customer Number: ${customer}\nUnits Consumed: ${u}\nAmount to Pay: Rs. ${amount.toFixed(2)}`; }
   },
   {
-    id: "player-rating-chart", title: "Player Ratings and Statistics", file: "Player_Ratings.py", category: "Data Science", icon: "chart-column-increasing", visualization: true,
+    id: "player-rating-chart", title: "#9 (DS) player rating and bar graph with table", file: "#9 (DS) player rating and bar graph with table.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-column-increasing", visualization: true,
     code: `import matplotlib.pyplot as plt
 import numpy as np
 player_data = {"sachin": {"team": "India", "matches": 250, "runs": 18426, "average": 44.5, "rating": 95}, "virat": {"team": "India", "matches": 300, "runs": 15921, "average": 50.2, "rating": 92}, "ricky": {"team": "Australia", "matches": 200, "runs": 9005, "average": 45.0, "rating": 88}, "joe": {"team": "England", "matches": 220, "runs": 8500, "average": 42.5, "rating": 84}}
@@ -732,7 +732,7 @@ plt.show()`,
     run() { return "Player rating chart and data table"; }
   },
   {
-    id: "player-analysis-four-charts", title: "Player Analysis: Four Charts", file: "Player_Analysis.py", category: "Data Science", icon: "chart-no-axes-combined", visualization: true,
+    id: "player-analysis-four-charts", title: "#9 testing not", file: "#9 testing not.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-no-axes-combined", visualization: true,
     code: `import matplotlib.pyplot as plt
 import numpy as np
 players = ["sachin", "virat", "ricky", "joe"]
@@ -749,7 +749,7 @@ for title, values in [("Matches Played", matches), ("Total Runs", runs), ("Batti
     run() { return "Four player comparison charts"; }
   },
   {
-    id: "clothes-sales-boxplot", title: "Clothes Store Sales Box Plot", file: "Clothes_Sales_Boxplot.py", category: "Data Science", icon: "chart-box", visualization: true,
+    id: "clothes-sales-boxplot", title: "#10 (DS) cloths store data and box plot", file: "#10 (DS) cloths store data and box plot.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-box", visualization: true,
     code: `import matplotlib.pyplot as plt
 jeans_sale = [1500, 3500, 6500, 6700, 6000, 6800]
 tshirt_sale = [5400, 5500, 6500, 7000, 6600, 7300]
@@ -761,7 +761,7 @@ plt.grid()
 plt.show()`, run() { return "Clothes store sales box plot"; }
   },
   {
-    id: "sales-line-chart", title: "Monthly Sales Line Chart", file: "Monthly_Sales.py", category: "Data Science", icon: "chart-line", visualization: true,
+    id: "sales-line-chart", title: "#11 (DS) salesmen monthly sales line chart", file: "#11 (DS) salesmen monthly sales line chart.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-line", visualization: true,
     code: `import matplotlib.pyplot as plt
 month = ["January", "February", "March", "April", "May", "June"]
 sales = [3500, 3100, 2700, 4500, 4000, 4800]
@@ -773,7 +773,7 @@ plt.legend()
 plt.show()`, run() { return "Monthly sales line chart"; }
   },
   {
-    id: "student-marks-histogram", title: "Student Marks Histogram", file: "Student_Marks_Histogram.py", category: "Data Science", icon: "chart-no-axes-column-increasing", visualization: true,
+    id: "student-marks-histogram", title: "#13 (DS) students obtain marks in histogram", file: "#13 (DS) students obtain marks in histogram.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-no-axes-column-increasing", visualization: true,
     code: `import matplotlib.pyplot as plt
 marks = [45, 67, 89, 34, 56, 78, 90, 23, 65, 88, 72, 49, 58, 91, 36, 60, 75, 82, 40, 95]
 plt.hist(marks, bins=[0, 20, 40, 60, 80, 100], color="skyblue", edgecolor="black")
@@ -783,7 +783,7 @@ plt.ylabel("Number of Students")
 plt.show()`, run() { return "Student marks histogram"; }
   },
   {
-    id: "subplot-grid", title: "Sixteen Subplot Charts", file: "Subplot_Grid.py", category: "Data Science", icon: "layout-grid", visualization: true,
+    id: "subplot-grid", title: "#14 (DS) subplot charts in 4x4 metrics", file: "#14 (DS) subplot charts in 4x4 metrics.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "layout-grid", visualization: true,
     code: `import matplotlib.pyplot as plt
 x = [1, 2, 3, 4]
 y = [10, 20, 15, 25]
@@ -796,7 +796,7 @@ plt.tight_layout()
 plt.show()`, run() { return "Sixteen line charts arranged in a 4 × 4 grid"; }
   },
   {
-    id: "image-matrix", title: "Read an Image as a Matrix", file: "Image_Matrix.py", category: "Computer Vision", icon: "scan-eye", visualization: true,
+    id: "image-matrix", title: "#19 (cv) print the matrix of any img", file: "#19 (cv) print the matrix of any img.py", category: "Computer Vision", collections: ["Ai practical 2026"], icon: "scan-eye", visualization: true,
     code: `import cv2
 img = cv2.imread("images/rj.jpg.jpg")
 print(img)  # Image pixels are stored as a NumPy matrix (B, G, R)
@@ -805,7 +805,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()`, run() { return "Image loaded as a pixel matrix"; }
   },
   {
-    id: "crop-image", title: "Crop an Image into Parts", file: "Crop_Image.py", category: "Computer Vision", icon: "crop", visualization: true,
+    id: "crop-image", title: "#20 (cv) crop image in different parts same img", file: "#20 (cv) crop image in different parts same img.py", category: "Computer Vision", collections: ["Ai practical 2026"], icon: "crop", visualization: true,
     code: `import cv2
 image = cv2.imread("images/rj.jpg.jpg")
 top_part = image[0:200, 0:200]
@@ -819,7 +819,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()`, run() { return "Original image and three crops"; }
   },
   {
-    id: "create-color-image", title: "Create a Random Color Image", file: "Random_Color_Image.py", category: "Computer Vision", icon: "palette", visualization: true,
+    id: "create-color-image", title: "#21 (cv) program to create own colour image", file: "#21 (cv) program to create own colour image.py", category: "Computer Vision", collections: ["Ai practical 2026"], icon: "palette", visualization: true,
     code: `import numpy as np
 import cv2
 import random
@@ -832,7 +832,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()`, run() { return "Random RGB image generated"; }
   },
   {
-    id: "image-window-modes", title: "Image Window Sizes", file: "Image_Window_Modes.py", category: "Computer Vision", icon: "panels-top-left", visualization: true,
+    id: "image-window-modes", title: "#22 (cv) display image in seprate window with diff method of win", file: "#22 (cv) display image in seprate window with diff method of win.py", category: "Computer Vision", collections: ["Ai practical 2026"], icon: "panels-top-left", visualization: true,
     code: `import cv2
 img = cv2.imread("images/rj.jpg.jpg")
 cv2.namedWindow("Auto-sized image", cv2.WINDOW_AUTOSIZE)
@@ -844,4 +844,3 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()`, run() { return "Image shown in auto-sized and resizable windows"; }
   },
 ]; 
-

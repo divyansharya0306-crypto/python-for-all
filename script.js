@@ -89,12 +89,14 @@ function setSolvedCount(value = Number(localStorage.getItem(solvedKey) || 0)) {
 }
 
 function categories() {
-  return ["All", ...new Set(state.programs.map(program => program.category))];
+  const names = new Set(state.programs.map(program => program.category));
+  state.programs.forEach(program => (program.collections || []).forEach(collection => names.add(collection)));
+  return ["All", ...names];
 }
 
 function renderCategories() {
   elements.categoryGrid.innerHTML = categories().map(category => {
-    const count = category === "All" ? state.programs.length : state.programs.filter(program => program.category === category).length;
+    const count = category === "All" ? state.programs.length : state.programs.filter(program => program.category === category || (program.collections || []).includes(category)).length;
     return `
       <button class="category-card ${category === state.activeCategory ? "active" : ""}" data-category="${category}">
         <span>${category}</span>
@@ -105,14 +107,14 @@ function renderCategories() {
 }
 
 function matchesSearch(program, query) {
-  const haystack = `${program.title} ${program.file} ${program.category}`.toLowerCase();
+  const haystack = `${program.title} ${program.file} ${program.category} ${(program.collections || []).join(" ")}`.toLowerCase();
   return haystack.includes(query.toLowerCase());
 }
 
 function renderPrograms() {
   const query = elements.searchInput.value.trim();
   const filtered = state.programs.filter(program => {
-    const inCategory = state.activeCategory === "All" || program.category === state.activeCategory;
+    const inCategory = state.activeCategory === "All" || program.category === state.activeCategory || (program.collections || []).includes(state.activeCategory);
     return inCategory && matchesSearch(program, query);
   });
 
@@ -554,4 +556,3 @@ function boot() {
 }
 
 boot();
-
