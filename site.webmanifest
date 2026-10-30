@@ -1,0 +1,14 @@
+{
+  "name": "ARIX | Arya Research & Innovation eXperience",
+  "short_name": "ARIX",
+  "description": "A Divyansh Arya Initiative for Python, data science, and computer vision learning.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#315b83",
+  "icons": [
+    { "src": "images/arix-icon-192.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any" },
+    { "src": "images/arix-icon-512.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" }
+  ]
+}
