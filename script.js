@@ -1,4 +1,4 @@
-const PASSWORD = "python123";
+const PASSWORD = "AiPractical26#Vision";
 const storageKey = "python-vault-pro-custom-programs";
 const deletedKey = "python-vault-pro-deleted-programs";
 const solvedKey = "python-vault-pro-solved-count";
@@ -410,18 +410,25 @@ function renderComputerVision(id) {
   const host=elements.graphBox, src="images/rj.jpg.jpg";
   if(id==="create-color-image") {
     host.innerHTML='<div class="cv-visual"><h3>Random Color Image (800 × 400)</h3><canvas id="randomImageCanvas" width="800" height="400" aria-label="Generated random color image"></canvas><p>Each pixel is assigned a random blue, green, and red value.</p></div>';
-    const canvas=$("#randomImageCanvas"), ctx=canvas.getContext("2d"), image=ctx.createImageData(80,40);
+    const canvas=$("#randomImageCanvas"), ctx=canvas.getContext("2d"), image=ctx.createImageData(canvas.width,canvas.height);
     for(let i=0;i<image.data.length;i+=4){image.data[i]=Math.random()*256;image.data[i+1]=Math.random()*256;image.data[i+2]=Math.random()*256;image.data[i+3]=255;}
-    const small=document.createElement("canvas");small.width=80;small.height=40;small.getContext("2d").putImageData(image,0,0);ctx.imageSmoothingEnabled=false;ctx.drawImage(small,0,0,800,400);
+    ctx.putImageData(image,0,0);
   } else if(id==="crop-image") {
-    const crops=[["Top part",0,0],["Middle part",-150,-100],["Bottom part",-200,-250]];
-    host.innerHTML=`<div class="cv-visual"><h3>Original Image and Cropped Regions</h3><img class="cv-original" src="${src}" alt="Original vintage car image"><div class="crop-grid">${crops.map(([name,x,y])=>`<figure><div class="crop-window"><img src="${src}" alt="${name} crop" style="left:${x}px;top:${y}px"></div><figcaption>${name}</figcaption></figure>`).join("")}</div></div>`;
+    const crops=[["Top part","0% 0%"],["Middle part","50% 50%"],["Bottom part","100% 100%"]];
+    host.innerHTML=`<div class="cv-visual"><h3>Original Image and Cropped Regions</h3><img class="cv-original" src="${src}" alt="Original vintage car image"><div class="crop-grid">${crops.map(([name,position])=>`<figure><div class="crop-window"><img src="${src}" alt="${name} crop" style="object-position:${position}"></div><figcaption>${name}</figcaption></figure>`).join("")}</div></div>`;
   } else if(id==="image-window-modes") {
     host.innerHTML=`<div class="cv-visual"><h3>Same Image in Two Window Modes</h3><div class="crop-grid"><figure><img class="cv-window-auto" src="${src}" alt="Auto-sized image window"><figcaption>Auto-sized window</figcaption></figure><figure><img class="cv-window-resizable" src="${src}" alt="Resizable image window"><figcaption>Resizable 500 × 500 window</figcaption></figure></div></div>`;
   } else {
     host.innerHTML=`<div class="cv-visual"><h3>Image Pixel Matrix (B, G, R)</h3><img class="cv-original" id="matrixSourceImage" src="${src}" alt="Image used to generate the pixel matrix"><p id="matrixDetails">Loading image pixel values…</p><pre id="matrixPreview" class="matrix-preview"></pre></div>`;
     const image=$("#matrixSourceImage"); image.addEventListener("load",()=>{const c=document.createElement("canvas"),w=12,h=6;c.width=w;c.height=h;const cx=c.getContext("2d");cx.drawImage(image,0,0,w,h);const px=cx.getImageData(0,0,w,h).data,rows=[];for(let y=0;y<h;y++){const row=[];for(let x=0;x<w;x++){const i=(y*w+x)*4;row.push([px[i+2],px[i+1],px[i]]);}rows.push(row);}$("#matrixDetails").textContent=`Image dimensions: ${image.naturalWidth} × ${image.naturalHeight} pixels. Showing a 6 × 12 BGR sample.`;$("#matrixPreview").textContent=rows.map(row=>row.map(p=>`[${p.join(",")}]`).join(" ")).join("\n");});
   }
+  host.querySelectorAll("img").forEach(image => {
+    image.addEventListener("error", () => {
+      host.innerHTML = '<div class="cv-visual cv-error"><i data-lucide="image-off"></i><h3>Image could not be loaded</h3><p>Check that images/rj.jpg.jpg is present in the published site folder.</p></div>';
+      initIcons();
+    }, { once: true });
+    if (image.complete) image.dispatchEvent(new Event(image.naturalWidth ? "load" : "error"));
+  });
   host.classList.remove("is-hidden");
 }
 
@@ -446,7 +453,7 @@ function initMonaco() {
     state.editor = monaco.editor.create(elements.editorNode, {
       value: "# Select a program to begin",
       language: "python",
-      theme: "vs-dark",
+      theme: document.body.classList.contains("classic-theme") ? "vs" : "vs-dark",
       fontSize: 14,
       minimap: { enabled: false },
       automaticLayout: true,
@@ -486,6 +493,10 @@ function addProgram(event) {
 }
 
 function bindEvents() {
+  const toggleTheme = () => {
+    const classic = document.body.classList.toggle("classic-theme");
+    if (window.monaco) monaco.editor.setTheme(classic ? "vs" : "vs-dark");
+  };
   elements.loginForm.addEventListener("submit", event => {
     event.preventDefault();
     if (elements.passwordInput.value === PASSWORD) {
@@ -494,7 +505,7 @@ function bindEvents() {
       elements.searchInput.focus();
       return;
     }
-    elements.loginError.textContent = "Incorrect password. Try python123.";
+    elements.loginError.textContent = "Incorrect password. Please try again.";
   });
 
   elements.searchInput.addEventListener("input", renderPrograms);
@@ -520,7 +531,27 @@ function bindEvents() {
     elements.passwordInput.value = "";
     goHome();
   });
-  $("#themeToggle").addEventListener("click", () => document.body.classList.toggle("light-mode"));
+  $("#themeToggle").addEventListener("click", toggleTheme);
+  const moreMenu = $("#moreMenu"), moreMenuBtn = $("#moreMenuBtn");
+  moreMenuBtn.addEventListener("click", () => {
+    const open = !moreMenu.classList.toggle("is-hidden");
+    moreMenuBtn.setAttribute("aria-expanded", String(open));
+  });
+  moreMenu.addEventListener("click", event => {
+    const action = event.target.closest("[data-more-action]")?.dataset.moreAction;
+    if (!action) return;
+    if (action === "home") goHome();
+    if (action === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    if (action === "theme") toggleTheme();
+    moreMenu.classList.add("is-hidden");
+    moreMenuBtn.setAttribute("aria-expanded", "false");
+  });
+  document.addEventListener("click", event => {
+    if (!event.target.closest(".more-menu-wrap")) { moreMenu.classList.add("is-hidden"); moreMenuBtn.setAttribute("aria-expanded", "false"); }
+  });
+  const scrollTopBtn = $("#scrollTopBtn");
+  scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  window.addEventListener("scroll", () => scrollTopBtn.classList.toggle("is-hidden", window.scrollY < 240), { passive: true });
   $("#mobileMenuBtn").addEventListener("click", () => elements.sidebar.classList.toggle("open"));
   $("#addProgramBtn").addEventListener("click", () => elements.addDialog.showModal());
   $("#closeDialogBtn").addEventListener("click", () => elements.addDialog.close());

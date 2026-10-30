@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python For All</title>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-  <link rel="stylesheet" href="style.css?v=20261030-aipractical2026" />
+  <link rel="stylesheet" href="style.css?v=20261030-classic-cv" />
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>
     window.MonacoEnvironment = { getWorkerUrl: () => "data:text/javascript;charset=utf-8,self.MonacoEnvironment={baseUrl:'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/'};importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/vs/base/worker/workerMain.js');" };
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.49.0/min/vs/loader.min.js"></script>
 </head>
-<body>
+<body class="classic-theme">
   <div class="aurora" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
@@ -20,7 +20,7 @@
     <section class="login-view" id="loginView">
       <div class="login-card glass">
         <div class="brand-mark">
-          <span>PV</span>
+          <i data-lucide="code-xml"></i>
         </div>
         <p class="eyebrow">Python For All</p>
         <h1>Unlock your Python library.</h1>
@@ -32,7 +32,7 @@
             <i data-lucide="lock"></i>
             <input id="passwordInput" type="password" placeholder="Enter vault password" autocomplete="current-password" />
           </div>
-          <p class="hint">Use <strong>python123</strong> for this demo.</p>
+          <p class="hint">Enter your workspace password to continue.</p>
           <button class="primary-btn" type="submit">
             <i data-lucide="log-in"></i>
             Open Vault
@@ -48,7 +48,7 @@
           <i data-lucide="panel-left"></i>
         </button>
         <div class="product">
-          <div class="mini-logo">PV</div>
+          <div class="mini-logo"><i data-lucide="code-xml"></i></div>
           <div>
             <p>Python For All</p>
             <strong>Pro Workspace</strong>
@@ -64,6 +64,16 @@
           <button class="icon-btn ghost" id="logoutBtn" aria-label="Lock vault" title="Lock vault">
             <i data-lucide="lock-keyhole"></i>
           </button>
+          <div class="more-menu-wrap">
+            <button class="icon-btn ghost" id="moreMenuBtn" aria-label="More options" title="More options" aria-expanded="false" aria-controls="moreMenu">
+              <i data-lucide="ellipsis"></i>
+            </button>
+            <div class="more-menu is-hidden" id="moreMenu">
+              <button type="button" data-more-action="home"><i data-lucide="library"></i>Programs library</button>
+              <button type="button" data-more-action="top"><i data-lucide="arrow-up"></i>Scroll to top</button>
+              <button type="button" data-more-action="theme"><i data-lucide="sun-moon"></i>Toggle theme</button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -116,9 +126,7 @@
           <div class="split-pane">
             <div class="code-panel">
               <div class="panel-bar">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+                <i class="code-panel-icon" data-lucide="file-code-2"></i>
                 <strong>Code</strong>
               </div>
               <div id="editor" class="editor"></div>
@@ -163,7 +171,11 @@
     </form>
   </dialog>
 
+  <button class="scroll-top-btn is-hidden" id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
   <script src="programs.js?v=20261030-aipractical2026"></script>
-  <script src="script.js?v=20261030-aipractical2026"></script>
+  <script src="script.js?v=20261030-classic-cv"></script>
 </body>
 </html>
