@@ -1,4 +1,4 @@
-const PASSWORD = "AiPractical26#Vision";
+const PASSWORD = "Arjx2026";
 const storageKey = "python-vault-pro-custom-programs";
 const deletedKey = "python-vault-pro-deleted-programs";
 const solvedKey = "python-vault-pro-solved-count";
