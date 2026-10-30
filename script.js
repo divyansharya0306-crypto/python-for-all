@@ -324,9 +324,11 @@ function runCurrentProgram() {
       if (program.category === "Computer Vision") renderComputerVision(program.id);
       else renderBuiltInGraph(program.id);
       elements.outputBox.classList.add("is-hidden");
+      document.querySelector(".split-pane").classList.add("has-visualization");
     } else {
       elements.graphBox.classList.add("is-hidden");
       elements.outputBox.classList.remove("is-hidden");
+      document.querySelector(".split-pane").classList.remove("has-visualization");
       elements.outputBox.textContent = program.run(rawInput || undefined, codeValue());
     }
     setSolvedCount(Number(localStorage.getItem(solvedKey) || 0) + 1);

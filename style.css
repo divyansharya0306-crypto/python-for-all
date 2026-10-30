@@ -610,8 +610,13 @@ textarea:focus {
 .graph-box svg {
   display: block;
   width: 100%;
+  height: auto;
   max-height: 460px;
   overflow: visible;
+}
+
+.split-pane.has-visualization {
+  grid-template-columns: minmax(280px, .8fr) minmax(390px, 1.2fr);
 }
 
 .cv-visual {
@@ -811,6 +816,10 @@ svg {
 
   .program-list,
   .split-pane {
+    grid-template-columns: 1fr;
+  }
+
+  .split-pane.has-visualization {
     grid-template-columns: 1fr;
   }
 
