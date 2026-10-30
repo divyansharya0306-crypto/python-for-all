@@ -407,7 +407,7 @@ function renderBuiltInGraph(id) {
 }
 
 function renderComputerVision(id) {
-  const host=elements.graphBox, src="images/rj.jpg.jpg";
+  const host=elements.graphBox, src="images/rj.jpg.jpg?v=20261030-cvassetfix";
   if(id==="create-color-image") {
     host.innerHTML='<div class="cv-visual"><h3>Random Color Image (800 × 400)</h3><canvas id="randomImageCanvas" width="800" height="400" aria-label="Generated random color image"></canvas><p>Each pixel is assigned a random blue, green, and red value.</p></div>';
     const canvas=$("#randomImageCanvas"), ctx=canvas.getContext("2d"), image=ctx.createImageData(canvas.width,canvas.height);
