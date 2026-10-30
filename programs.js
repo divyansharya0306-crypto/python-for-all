@@ -642,158 +642,64 @@ plt.show()`,
   },
   {
     id: "vowel-frequency", title: "#1 (AdP) Frecuency of each vowel and total no of vowel", file: "#1 (AdP) Frecuency of each vowel and total no of vowel.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "case-sensitive",
-    code: `text = input("Enter a string: ")
-counts = {vowel: 0 for vowel in "aeiou"}
-for character in text.lower():
-    if character in counts:
-        counts[character] += 1
-for vowel, count in counts.items():
-    print(f"Frequency of vowel {vowel.upper()} =", count)
-print("Total vowels present in the text =", sum(counts.values()))`,
+    code: "# 1. WAP to check the frequency of each vowel and also find the total number of vowel present in the \r\n# string enter by the user\r\n\r\ntext = input(\u0022Enter a string: \u0022)\r\n\r\na= e = i = o = u = 0\r\n\r\nfor chat in text:\r\n    if chat == \u0027a\u0027 or chat == \u0027A\u0027:\r\n       a =a \u002B 1\r\n    elif chat == \u0027e\u0027 or chat == \u0027E\u0027:\r\n        e = e \u002B 1\r\n    elif chat == \u0027i\u0027 or chat == \u0027I\u0027:\r\n        i = i \u002B 1\r\n    elif chat == \u0027o\u0027 or chat == \u0027O\u0027:\r\n        o = o \u002B 1\r\n    elif chat == \u0027u\u0027 or chat == \u0027U\u0027:\r\n        u = u \u002B 1\r\n\r\ntotal =a \u002B e \u002B i \u002B o \u002B u\r\n\r\nprint(\u0022Frequency of vowel A =\u0022, a)\r\nprint(\u0022Frequency of vowel E =\u0022, e)\r\nprint(\u0022Frequency of vowel I =\u0022, i)\r\nprint(\u0022Frequency of vowel O =\u0022, o)\r\nprint(\u0022Frequency of vowel U =\u0022, u)\r\nprint(\u0022Total vowels present in the text =\u0022, total)\r\n\r\n#RDJ\r\n\r\n\r\n",
     run(input) { const text = String(input || "Education"); const counts = Object.fromEntries([...["a","e","i","o","u"].map(v=>[v,(text.toLowerCase().match(new RegExp(v,"g"))||[]).length])]); return `Enter a string: ${text}\n\n${Object.entries(counts).map(([v,n])=>`Frequency of vowel ${v.toUpperCase()} = ${n}`).join("\n")}\nTotal vowels present in the text = ${Object.values(counts).reduce((a,b)=>a+b,0)}`; }
   },
   {
     id: "character-types", title: "#2 (AdP) Count uppercase, lowercase, digits, and special characters", file: "#2 (AdP) Count uppercase, lowercase, digits, and special characters.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "scan-text",
-    code: `text = input("Enter a string: ")
-upper = lower = digit = special = 0
-for ch in text:
-    if ch.isupper(): upper += 1
-    elif ch.islower(): lower += 1
-    elif ch.isdigit(): digit += 1
-    else: special += 1
-print("Uppercase letters =", upper)
-print("Lowercase letters =", lower)
-print("Digits =", digit)
-print("Special characters =", special)`,
+    code: "# wite a program to check and count in input string how many character is an uppercase letter or lowercase or\r\n# a digit or a special character\r\n\r\ntext = input(\u0022Enter a string: \u0022)\r\n\r\nupper = lower = digit = special = 0\r\n\r\nfor ch in text:\r\n    if ch \u003E= \u0027A\u0027 and ch \u003C= \u0027Z\u0027:\r\n        upper = upper \u002B 1\r\n    elif ch \u003E= \u0027a\u0027 and ch \u003C= \u0027z\u0027:\r\n        lower = lower \u002B 1\r\n    elif ch \u003E= \u00270\u0027 and ch \u003C= \u00279\u0027:\r\n        digit = digit \u002B 1\r\n    else:\r\n        special = special \u002B 1\r\n\r\nprint(\u0022Uppercase letters =\u0022, upper)\r\nprint(\u0022Lowercase letters =\u0022, lower)\r\nprint(\u0022Digits =\u0022, digit)\r\nprint(\u0022Special characters =\u0022, special)",
     run(input) { const text=String(input||"Hello123!"); const c=[...text].reduce((a,ch)=>{if(/[A-Z]/.test(ch))a[0]++;else if(/[a-z]/.test(ch))a[1]++;else if(/[0-9]/.test(ch))a[2]++;else a[3]++;return a},[0,0,0,0]); return `Enter a string: ${text}\n\nUppercase letters = ${c[0]}\nLowercase letters = ${c[1]}\nDigits = ${c[2]}\nSpecial characters = ${c[3]}`; }
   },
   {
     id: "maximum-five", title: "#3 (AdP) Find the maximum of five numbers", file: "#3 (AdP) Find the maximum of five numbers.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "arrow-up-wide-narrow",
-    code: `numbers = []
-for i in range(5):
-    numbers.append(int(input("Enter a number: ")))
-print("Maximum number =", max(numbers))`,
+    code: "# WAP to find the maximum number out of the given FIVE numbers\r\n\r\nnum1 = int(input(\u0022Enter first number: \u0022))\r\nnum2 = int(input(\u0022Enter second number: \u0022))\r\nnum3 = int(input(\u0022Enter third number: \u0022))\r\nnum4 = int(input(\u0022Enter fourth number: \u0022))\r\nnum5 = int(input(\u0022Enter fifth number: \u0022))\r\n\r\nmaximum = num1\r\n\r\n#if num2 \u003E maximum:\r\n    maximum = num2\r\n\r\n#if num3 \u003E maximum:\r\n    maximum = num3\r\n\r\n#if num4 \u003E maximum:\r\n    maximum = num4\r\n\r\n#if num5 \u003E maximum:\r\n    maximum = num5\r\n\r\nprint(\u0022Maximum number =\u0022, maximum)\r\n",
     run(input) { const a=String(input||"12, 7, 35, 19, 4").split(/[\s,]+/).map(Number); if(a.length<5||a.slice(0,5).some(n=>!Number.isFinite(n)))return "Enter five numbers separated by commas."; return `Numbers: ${a.slice(0,5).join(", ")}\n\nMaximum number = ${Math.max(...a.slice(0,5))}`; }
   },
   {
     id: "armstrong-number-practice", title: "#4 (AdP) Check whether a number is Armstrong or not", file: "#4 (AdP) Check whether a number is Armstrong or not.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "sparkles",
-    code: `num = int(input("Enter a number: "))
-digits = str(abs(num))
-power = len(digits)
-total = sum(int(digit) ** power for digit in digits)
-print("Armstrong number" if total == num else "Not an Armstrong number")`,
+    code: "# WAP to check enter number is Armstrong or not\r\n\r\nnum = int(input(\u0022Enter a number: \u0022))\r\n\r\ntemp = num\r\ncount = 0\r\n\r\n#while temp \u003E 0:\r\n#    count = count \u002B 1\r\n#    temp = temp // 10\r\n\r\ntemp = num\r\ntotal = 0\r\n\r\nwhile temp \u003E 0:\r\n    digit = temp % 10\r\n    total = total \u002B digit ** count\r\n    temp = temp // 10\r\n\r\nif total == num:\r\n    print(\u0022Armstrong number\u0022)\r\nelse:\r\n    print(\u0022Not an Armstrong number\u0022)\r\n",
     run(input) { const n=Number(String(input||"153").split(",")[0]); if(!Number.isInteger(n))return "Enter a valid integer."; const d=String(Math.abs(n)); const total=[...d].reduce((s,x)=>s+Number(x)**d.length,0); return `Enter a number: ${n}\n\n${total===n?"Armstrong number":"Not an Armstrong number"}`; }
   },
   {
     id: "first-primes", title: "#5 (AdP) Print first n prime numbers", file: "#5 (AdP) Print first n prime numbers.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "hash",
-    code: `n = int(input("Enter n: "))
-count = 0
-number = 2
-while count < n:
-    if all(number % divisor for divisor in range(2, int(number ** 0.5) + 1)):
-        print(number)
-        count += 1
-    number += 1`,
+    code: "# WAP to print series of the prime number up to nth term\r\n\r\nn = int(input(\u0022Enter n: \u0022))\r\n\r\ncount = 0\r\nnumber = 2\r\n\r\nwhile count \u003C n:\r\n    divisor = 2\r\n    prime = 1\r\n\r\n    while divisor \u003C number:\r\n        if number % divisor == 0:\r\n            prime = 0\r\n            break\r\n        divisor = divisor \u002B 1\r\n\r\n    if prime == 1:\r\n        print(number)\r\n        count = count \u002B 1\r\n\r\n    number = number \u002B 1",
     run(input) { const n=Math.floor(Number(String(input||"10").split(",")[0])); if(!Number.isFinite(n)||n<1||n>1000)return "Enter n from 1 to 1000."; const primes=[]; for(let x=2;primes.length<n;x++){let p=true;for(let d=2;d*d<=x;d++)if(x%d===0){p=false;break;}if(p)primes.push(x);} return `Enter n: ${n}\n\n${primes.join("\n")}`; }
   },
   {
     id: "list-frequency", title: "#6 (AdP) Count frequency of every element in a list", file: "#6 (AdP) Count frequency of every element in a list.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "list-ordered",
-    code: `numbers = list(map(int, input("Enter numbers separated by spaces: ").split()))
-for value in dict.fromkeys(numbers):
-    print(value, "occurs", numbers.count(value), "times")`,
+    code: "# WAP to count the frequency of every element in a enter list\r\n\r\nn = int(input(\u0022Enter number of elements: \u0022))\r\n\r\nlst = []\r\n\r\nfor i in range(n):\r\n    num = int(input(\u0022Enter element: \u0022))\r\n    lst.append(num)\r\n\r\n#for i in range(n):\r\n    count = 0\r\n\r\n    #for j in range(i):\r\n       # if lst[i] == lst[j]:\r\n        #    count = -1\r\n         #   break\r\n\r\n    if count != -1:\r\n        for j in range(n):\r\n            if lst[i] == lst[j]:\r\n                count = count \u002B 1\r\n\r\n        print(lst[i], \u0022occurs\u0022, count, \u0022times\u0022)\r\n",
     run(input) { const a=String(input||"2, 4, 2, 5, 4, 2").split(/[\s,]+/).filter(Boolean).map(Number); if(!a.length||a.some(x=>!Number.isFinite(x)))return "Enter numbers separated by spaces or commas."; const unique=[...new Set(a)]; return `Numbers: ${a.join(", ")}\n\n${unique.map(x=>`${x} occurs ${a.filter(n=>n===x).length} times`).join("\n")}`; }
   },
   {
     id: "electricity-bill", title: "#7 (AdP) Electricity bill calculator", file: "#7 (AdP) Electricity bill calculator.py", category: "Practice Problems", collections: ["Ai practical 2026"], icon: "zap",
-    code: `customer_no = input("Enter customer number: ")
-units = int(input("Enter units consumed: "))
-if units <= 100: amount = units * 5
-elif units <= 300: amount = 500 + (units - 100) * 10.25
-elif units <= 500: amount = 2550 + (units - 300) * 15.50
-else: amount = 5650 + (units - 500) * 19.75
-print("Customer Number:", customer_no)
-print("Units Consumed:", units)
-print("Amount to Pay: Rs.", amount)`,
+    code: "# electricity bill calculator\r\n\r\ncustomer_no = input(\u0022Enter customer number: \u0022)\r\nunits = int(input(\u0022Enter units consumed: \u0022))\r\n\r\nif units \u003C= 100:\r\n    amount = units * 5\r\n\r\nelif units \u003C= 300:\r\n    amount = 100 \u002B (units - 100) * 10.25\r\n\r\nelif units \u003C= 500:\r\n    amount = 350 \u002B (units - 300) * 15.50\r\n\r\nelse:\r\n    amount = 650 \u002B (units - 500) * 19.75\r\n\r\nprint(\u0022\\n----- ELECTRICITY BILL -----\u0022)\r\nprint(\u0022Customer Number :\u0022, customer_no)\r\nprint(\u0022Units Consumed  :\u0022, units)\r\nprint(\u0022Amount to Pay   : Rs.\u0022, amount)",
     run(input) { const [customer="C-1001",unitsText="250"]=String(input||"").split(/[;,\s]+/); const u=Number(unitsText); if(!Number.isFinite(u)||u<0)return "Enter customer number and non-negative units, e.g. C-1001, 250."; const amount=u<=100?u*5:u<=300?500+(u-100)*10.25:u<=500?2550+(u-300)*15.5:5650+(u-500)*19.75; return `Customer Number: ${customer}\nUnits Consumed: ${u}\nAmount to Pay: Rs. ${amount.toFixed(2)}`; }
   },
   {
     id: "player-rating-chart", title: "#9 (DS) player rating and bar graph with table", file: "#9 (DS) player rating and bar graph with table.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-column-increasing", visualization: true,
-    code: `import matplotlib.pyplot as plt
-import numpy as np
-player_data = {"sachin": {"team": "India", "matches": 250, "runs": 18426, "average": 44.5, "rating": 95}, "virat": {"team": "India", "matches": 300, "runs": 15921, "average": 50.2, "rating": 92}, "ricky": {"team": "Australia", "matches": 200, "runs": 9005, "average": 45.0, "rating": 88}, "joe": {"team": "England", "matches": 220, "runs": 8500, "average": 42.5, "rating": 84}}
-players = list(player_data)
-ratings = [player_data[name]["rating"] for name in players]
-print("Name  Team  Matches  Runs  Average")
-for name, data in player_data.items(): print(name, data["team"], data["matches"], data["runs"], data["average"])
-plt.bar(players, ratings, color="orange")
-plt.title("Ratings of Players")
-plt.ylim(0, 100)
-plt.show()`,
+    code: "import matplotlib.pyplot as plt\r\nimport numpy as np\r\n\r\nplayer_data = {\r\n    \u0022sachin\u0022: {\u0022team\u0022: \u0022India\u0022, \u0022matches\u0022: 250, \u0022runs\u0022: 18426, \u0022average\u0022: 44.5, \u0022rating\u0022: 95},\r\n    \u0022virat\u0022: {\u0022team\u0022: \u0022India\u0022, \u0022matches\u0022: 300, \u0022runs\u0022: 15921, \u0022average\u0022: 50.2, \u0022rating\u0022: 92},\r\n    \u0022ricky\u0022: {\u0022team\u0022: \u0022Australia\u0022, \u0022matches\u0022: 200, \u0022runs\u0022: 9005, \u0022average\u0022: 45.0, \u0022rating\u0022: 88},\r\n    \u0022joe\u0022: {\u0022team\u0022: \u0022England\u0022, \u0022matches\u0022: 220, \u0022runs\u0022: 8500, \u0022average\u0022: 42.5, \u0022rating\u0022: 84}\r\n}\r\n\r\nplayers = list(player_data.keys())\r\n\r\nteams = [player_data[name][\u0022team\u0022] for name in players]\r\nmatches = [player_data[name][\u0022matches\u0022] for name in players]\r\nruns = [player_data[name][\u0022runs\u0022] for name in players]\r\naverage = [player_data[name][\u0022average\u0022] for name in players]\r\nratings = [player_data[name][\u0022rating\u0022] for name in players]\r\n\r\nprint(\u0022Name     Team       Matches   Runs   Average\u0022)\r\n\r\nfor i in range(len(players)):\r\n   print(f\u0022{players[i]:\u003C9} {teams[i]:\u003C12} {matches[i]:\u003C12} {runs[i]:\u003C11} {average[i]}\u0022)\r\nprint()\r\nprint(\u0022Players having runs more than 9000:\u0022)\r\n\r\nfor i in range(len(players)):\r\n    if runs[i] \u003E 9000:\r\n        print(players[i], \u0022-\u0022, runs[i])\r\n\r\nx = np.arange(len(players))\r\n\r\nplt.figure(figsize=(10, 6))\r\n\r\nplt.bar(x, ratings, color=\u0022orange\u0022, label=\u0022Player Rating\u0022)\r\n\r\nplt.xlabel(\u0022Player Name\u0022)\r\nplt.ylabel(\u0022Rating\u0022)\r\nplt.title(\u0022Ratings of Players\u0022)\r\n\r\nplt.xticks(x, players)\r\nplt.ylim(0, 100)\r\n\r\nplt.legend()\r\nplt.grid(axis=\u0022y\u0022, linestyle=\u0022--\u0022, alpha=0.5)\r\nplt.grid(axis=\u0022x\u0022, linestyle=\u0022--\u0022, alpha=0.5)\r\n\r\n\r\nplt.show()\r\n",
     run() { return "Player rating chart and data table"; }
   },
   {
     id: "player-analysis-four-charts", title: "#9 testing not", file: "#9 testing not.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-no-axes-combined", visualization: true,
-    code: `import matplotlib.pyplot as plt
-import numpy as np
-players = ["sachin", "virat", "ricky", "joe"]
-matches = [250, 300, 200, 220]
-runs = [18426, 15921, 9005, 8500]
-average = [44.5, 50.2, 45.0, 42.5]
-ratings = [95, 92, 88, 84]
-for title, values in [("Matches Played", matches), ("Total Runs", runs), ("Batting Average", average), ("Player Ratings", ratings)]:
-    plt.figure(figsize=(8, 5))
-    plt.bar(players, values)
-    plt.title(title)
-    plt.grid(axis="y", linestyle="--", alpha=0.5)
-    plt.show()`,
+    code: "import matplotlib.pyplot as plt\r\nimport numpy as np\r\n\r\nplayer_data = {\r\n    \u0022sachin\u0022: {\u0022team\u0022: \u0022India\u0022, \u0022matches\u0022: 250, \u0022runs\u0022: 18426, \u0022average\u0022: 44.5, \u0022rating\u0022: 95},\r\n    \u0022virat\u0022: {\u0022team\u0022: \u0022India\u0022, \u0022matches\u0022: 300, \u0022runs\u0022: 15921, \u0022average\u0022: 50.2, \u0022rating\u0022: 92},\r\n    \u0022ricky\u0022: {\u0022team\u0022: \u0022Australia\u0022, \u0022matches\u0022: 200, \u0022runs\u0022: 9005, \u0022average\u0022: 45.0, \u0022rating\u0022: 88},\r\n    \u0022joe\u0022: {\u0022team\u0022: \u0022England\u0022, \u0022matches\u0022: 220, \u0022runs\u0022: 8500, \u0022average\u0022: 42.5, \u0022rating\u0022: 84}\r\n}\r\n\r\nplayers = list(player_data.keys())\r\n\r\nteams = [player_data[name][\u0022team\u0022] for name in players]\r\nmatches = [player_data[name][\u0022matches\u0022] for name in players]\r\nruns = [player_data[name][\u0022runs\u0022] for name in players]\r\naverage = [player_data[name][\u0022average\u0022] for name in players]\r\nratings = [player_data[name][\u0022rating\u0022] for name in players]\r\n\r\nx = np.arange(len(players))\r\n\r\n# =====================================================================\r\n# STEP 1: CONSOLE OUTPUT SEQUENCES\r\n# =====================================================================\r\nprint(\u0022--- SEQUENCE 1: ALL PLAYER DETAILS ---\u0022)\r\nprint(\u0022Name     Team       Matches   Runs   Average\u0022)\r\nfor i in range(len(players)):\r\n    print(f\u0022{players[i]:\u003C8} {teams[i]:\u003C10} {matches[i]:\u003C9} {runs[i]:\u003C6} {average[i]}\u0022)\r\nprint(\u0022\\n\u0022 \u002B \u0022=\u0022*50 \u002B \u0022\\n\u0022)\r\n\r\nprint(\u0022--- SEQUENCE 2: MILESTONE PLAYERS (RUNS \u003E 9000) ---\u0022)\r\nfor i in range(len(players)):\r\n    if runs[i] \u003E 9000:\r\n        print(f\u0022{players[i]} - {runs[i]} runs\u0022)\r\nprint(\u0022\\n\u0022 \u002B \u0022=\u0022*50 \u002B \u0022\\n\u0022)\r\n\r\n# Helper function to prevent repeating styling code for every chart\r\ndef apply_chart_styles(title, ylabel):\r\n    plt.xlabel(\u0022Player Name\u0022)\r\n    plt.ylabel(ylabel)\r\n    plt.title(title)\r\n    plt.xticks(x, players)\r\n    plt.grid(axis=\u0022both\u0022, linestyle=\u0022--\u0022, alpha=0.5)\r\n\r\n# =====================================================================\r\n# STEP 2: GRAPH VISUALIZATION SEQUENCES\r\n# (Each plt.show() halts code execution until you close the window)\r\n# =====================================================================\r\n\r\nprint(\u0022--\u003E Launching Graph Sequence 1: Matches Played (Close window to proceed)\u0022)\r\nplt.figure(figsize=(8, 5))\r\nplt.bar(x, matches, color=\u0022skyblue\u0022)\r\napply_chart_styles(\u0022Matches Played\u0022, \u0022Number of Matches\u0022)\r\nplt.show()\r\n\r\nprint(\u0022--\u003E Launching Graph Sequence 2: Total Runs (Close window to proceed)\u0022)\r\nplt.figure(figsize=(8, 5))\r\nplt.bar(x, runs, color=\u0022lightgreen\u0022)\r\napply_chart_styles(\u0022Total Runs Scored\u0022, \u0022Runs\u0022)\r\nplt.show()\r\n\r\nprint(\u0022--\u003E Launching Graph Sequence 3: Batting Average (Close window to proceed)\u0022)\r\nplt.figure(figsize=(8, 5))\r\nplt.bar(x, average, color=\u0022salmon\u0022)\r\napply_chart_styles(\u0022Batting Average\u0022, \u0022Average\u0022)\r\nplt.show()\r\n\r\nprint(\u0022--\u003E Launching Graph Sequence 4: Player Ratings (Final graph)\u0022)\r\nplt.figure(figsize=(8, 5))\r\nplt.bar(x, ratings, color=\u0022orange\u0022, label=\u0022Player Rating\u0022)\r\napply_chart_styles(\u0022Ratings of Players\u0022, \u0022Rating\u0022)\r\nplt.ylim(0, 100)\r\nplt.legend()\r\nplt.show()\r\n\r\nprint(\u0022\\nAll sequences completed successfully.\u0022)\r\n",
     run() { return "Four player comparison charts"; }
   },
   {
     id: "clothes-sales-boxplot", title: "#10 (DS) cloths store data and box plot", file: "#10 (DS) cloths store data and box plot.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-box", visualization: true,
-    code: `import matplotlib.pyplot as plt
-jeans_sale = [1500, 3500, 6500, 6700, 6000, 6800]
-tshirt_sale = [5400, 5500, 6500, 7000, 6600, 7300]
-shirt_sale = [7500, 6000, 6800, 7300, 7200, 5500]
-plt.boxplot([jeans_sale, tshirt_sale, shirt_sale], labels=["Jeans", "T-Shirts", "Shirts"])
-plt.title("Clothes Store Sales")
-plt.ylabel("Sales Amount")
-plt.grid()
-plt.show()`, run() { return "Clothes store sales box plot"; }
+    code: "import matplotlib.pyplot as plt\r\n\r\njeans_sale = [1500, 3500, 6500, 6700, 6000, 6800]\r\ntshirt_sale = [5400, 5500, 6500, 7000, 6600, 7300]\r\nshirt_sale = [7500, 6000, 6800, 7300, 7200, 5500]\r\n\r\nsale_data = [jeans_sale, tshirt_sale, shirt_sale]\r\n\r\nplt.boxplot(sale_data, labels=[\u0022Jeans\u0022, \u0022T-Shirts\u0022, \u0022Shirts\u0022])\r\n\r\nplt.title(\u0022Clothes Store Sales\u0022)\r\nplt.xlabel(\u0022Clothes Type\u0022)\r\nplt.ylabel(\u0022Sales Amount\u0022)\r\nplt.grid()\r\n\r\nplt.show()", run() { return "Clothes store sales box plot"; }
   },
   {
     id: "sales-line-chart", title: "#11 (DS) salesmen monthly sales line chart", file: "#11 (DS) salesmen monthly sales line chart.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-line", visualization: true,
-    code: `import matplotlib.pyplot as plt
-month = ["January", "February", "March", "April", "May", "June"]
-sales = [3500, 3100, 2700, 4500, 4000, 4800]
-plt.plot(month, sales, label="Sales", color="red", linestyle="--", linewidth=3, marker=".")
-plt.title("Sales Stats")
-plt.xlabel("Month")
-plt.ylabel("Sales")
-plt.legend()
-plt.show()`, run() { return "Monthly sales line chart"; }
+    code: "import matplotlib.pyplot as plt\r\n\r\nmonth = [\u0022January\u0022, \u0022February\u0022, \u0022March\u0022, \u0022April\u0022, \u0022May\u0022, \u0022June\u0022]\r\nsales = [3500, 3100, 2700, 4500, 4000, 4800]\r\n\r\nplt.plot(\r\n    month, sales,\r\n    label=\u0022Sales\u0022,\r\n    color=\u0022red\u0022,\r\n    linestyle=\u0022--\u0022,\r\n    linewidth=6,\r\n    marker=\u0022.\u0022,\r\n    markeredgecolor=\u0022blue\u0022,\r\n    markerfacecolor=\u0022black\u0022\r\n)\r\n\r\nplt.title(\u0022Sales Stats\u0022)\r\nplt.xlabel(\u0022Month\u0022)\r\nplt.ylabel(\u0022Sales\u0022)\r\n\r\nplt.legend()\r\n\r\nplt.show()", run() { return "Monthly sales line chart"; }
   },
   {
     id: "student-marks-histogram", title: "#13 (DS) students obtain marks in histogram", file: "#13 (DS) students obtain marks in histogram.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "chart-no-axes-column-increasing", visualization: true,
-    code: `import matplotlib.pyplot as plt
-marks = [45, 67, 89, 34, 56, 78, 90, 23, 65, 88, 72, 49, 58, 91, 36, 60, 75, 82, 40, 95]
-plt.hist(marks, bins=[0, 20, 40, 60, 80, 100], color="skyblue", edgecolor="black")
-plt.title("Histogram of Student Marks")
-plt.xlabel("Marks Range")
-plt.ylabel("Number of Students")
-plt.show()`, run() { return "Student marks histogram"; }
+    code: "import matplotlib.pyplot as plt\r\n\r\nmarks = [45, 67, 89, 34, 56, 78, 90, 23, 65, 88,\r\n         72, 49, 58, 91, 36, 60, 75, 82, 40, 95]\r\n\r\nranges = [0, 20, 40, 60, 80, 100]\r\n\r\nplt.hist(marks, bins=ranges, color=\u0022skyblue\u0022, edgecolor=\u0022black\u0022)\r\n\r\nplt.title(\u0022Histogram of Student Marks\u0022)\r\nplt.xlabel(\u0022Marks Range\u0022)\r\nplt.ylabel(\u0022Number of Students\u0022)\r\n\r\nplt.show()", run() { return "Student marks histogram"; }
   },
   {
     id: "subplot-grid", title: "#14 (DS) subplot charts in 4x4 metrics", file: "#14 (DS) subplot charts in 4x4 metrics.py", category: "Data Science", collections: ["Ai practical 2026"], icon: "layout-grid", visualization: true,
-    code: `import matplotlib.pyplot as plt
-x = [1, 2, 3, 4]
-y = [10, 20, 15, 25]
-plt.figure(figsize=(12, 10))
-for i in range(1, 17):
-    plt.subplot(4, 4, i)
-    plt.plot(x, y)
-    plt.title("Chart " + str(i))
-plt.tight_layout()
-plt.show()`, run() { return "Sixteen line charts arranged in a 4 × 4 grid"; }
+    code: "import matplotlib.pyplot as plt\r\n\r\nx = [1, 2, 3, 4]\r\ny = [10, 20, 15, 25]\r\n\r\nplt.figure(figsize=(12, 10))\r\n\r\nfor i in range(1, 17):\r\n    plt.subplot(4, 4, i)\r\n\r\n    plt.plot(x, y)\r\n\r\n    plt.title(\u0022Chart \u0022 \u002B str(i))\r\n\r\nplt.tight_layout()\r\n\r\nplt.show()", run() { return "Sixteen line charts arranged in a 4 × 4 grid"; }
   },
   {
     id: "image-matrix", title: "#19 (cv) print the matrix of any img", file: "#19 (cv) print the matrix of any img.py", category: "Computer Vision", collections: ["Ai practical 2026"], icon: "scan-eye", visualization: true,
